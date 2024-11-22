@@ -1,10 +1,10 @@
-import os
 import requests
 from flask import Flask, request, redirect, session, url_for, render_template
 from urllib.parse import urlencode
+import os
 
 app = Flask(__name__)
-app.secret_key = os.environ.get('SECRET_KEY', 'your_secret_key')  # Use environment variable in production
+app.secret_key = 'your_secret_key'  # This is still needed for Flask sessions
 
 # Spotify API constants
 SPOTIFY_AUTHORIZE_URL = "https://accounts.spotify.com/authorize"
@@ -14,7 +14,7 @@ SPOTIFY_ME_URL = "https://api.spotify.com/v1/me"
 # Initialize as None, will be set through the form
 CLIENT_ID = None
 CLIENT_SECRET = None
-REDIRECT_URI = os.environ.get('REDIRECT_URI', 'http://localhost:8888/callback')
+REDIRECT_URI = 'https://spotify-token-generator-4e82b1de0dc6.herokuapp.com/callback'
 
 def get_spotify_authorize_url(client_id, redirect_uri, scope):
     params = {
