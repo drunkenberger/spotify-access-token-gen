@@ -1,0 +1,9 @@
+[build]
+  command = "pip install -r requirements.txt"
+  functions = "netlify/functions"
+  publish = "templates"
+
+[[redirects]]
+  from = "/*"
+  to = "/login.html"
+  status = 200 
