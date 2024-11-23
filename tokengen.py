@@ -14,7 +14,7 @@ SPOTIFY_ME_URL = "https://api.spotify.com/v1/me"
 # Initialize as None, will be set through the form
 CLIENT_ID = None
 CLIENT_SECRET = None
-REDIRECT_URI = 'https://spotify-token-generator-4e82b1de0dc6.herokuapp.com/callback'
+REDIRECT_URI = 'http://localhost:8888/callback'
 
 def get_spotify_authorize_url(client_id, redirect_uri, scope):
     params = {
@@ -89,5 +89,4 @@ def refresh():
                          refresh_token=session['refresh_token'])
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 8888))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='localhost', port=8888, debug=True)
